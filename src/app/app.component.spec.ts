@@ -1,8 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ActivatedRouteSnapshot, RouterModule } from '@angular/router';
-import { appRoutes } from './app.module';
-import { MainComponent } from './main/main.component';
+import { appRoutes } from './app-routing.module';
+import { MainComponent } from './modules/main/main.component';
 import { APP_BASE_HREF } from '@angular/common';
 import {
   MatButtonModule,
@@ -13,14 +13,14 @@ import {
   MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
-import { OperatorComponent } from './operator/operator.component';
+import { OperatorComponent } from './modules/operator/operator.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InfoSnackbarComponent } from './info-snackbar/info-snackbar.component';
+import { InfoSnackbarComponent } from './components/info-snackbar/info-snackbar.component';
 import { TextMaskModule } from 'angular2-text-mask';
 
 describe('AppComponent', () => {

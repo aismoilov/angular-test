@@ -17,16 +17,16 @@
                    name="phone" id="phone"
                    [textMask]="{mask: phoneMask}"
                    placeholder="+7 (999) 999-9999">
-            <mat-error
-              *ngIf="!fillForm.get('phone').hasError('required') && fillForm.get('phone').hasError('pattern') && !fillForm.get('phone').hasError('validOperatorCode')">
-              <span>Invalid phone</span>
-            </mat-error>
-            <mat-error *ngIf="!fillForm.get('phone').hasError('required') && fillForm.get('phone').hasError('validOperatorCode')">
-              <span>Invalid operator code</span>
-            </mat-error>
-            <mat-error *ngIf="fillForm.get('phone').hasError('required')">
-              <span>Phone is required</span>
-            </mat-error>
+                <mat-error
+                  *ngIf="!fillForm.get('phone').hasError('required') && fillForm.get('phone').hasError('pattern') && !fillForm.get('phone').hasError('validOperatorCode')">
+                  <span>Invalid phone</span>
+                </mat-error>
+                <mat-error *ngIf="!fillForm.get('phone').hasError('required') && fillForm.get('phone').hasError('validOperatorCode')">
+                  <span>Invalid operator code</span>
+                </mat-error>
+                <mat-error *ngIf="fillForm.get('phone').hasError('required')">
+                  <span>Phone is required</span>
+                </mat-error>
           </mat-form-field>
         </div>
         <div class="col-md-7"></div>

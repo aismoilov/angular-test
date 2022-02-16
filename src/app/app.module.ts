@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { AppRoutes } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainComponent } from './main/main.component';
-import { OperatorComponent } from './operator/operator.component';
+import { MainComponent } from './modules/main/main.component';
+import { OperatorComponent } from './modules/operator/operator.component';
 
 import {
   MatButtonModule,
@@ -19,12 +19,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
-import { InfoSnackbarComponent } from './info-snackbar/info-snackbar.component';
-
-export const appRoutes: Routes = [
-  { path: '', component: MainComponent, pathMatch: 'full' },
-  { path: 'operator/:id', component: OperatorComponent },
-];
+import { InfoSnackbarComponent } from './components/info-snackbar/info-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -40,10 +35,7 @@ export const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    AppRoutes,
     MatToolbarModule,
     MatCardModule,
     MatIconModule,

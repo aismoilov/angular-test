@@ -24,7 +24,7 @@ describe('Operator page', () => {
   it('Check phone mask', () => {
     cy.visit(BASE_URL);
     cy.get(`[href="/operator/1"]`).click();
-    cy.get(PHONE_INPUT).focus().type('+./\';,cn.йууцкуkjdasdn', {delay: 200}).should('have.value', '+7 (7__) ___-__-__').clear();
+    cy.get(PHONE_INPUT).focus().type('+./\';,cn.йууцкуkjdasdn', {delay: 200}).blur().should('have.value', '+7 (___) ___-__-__').clear();
   });
   it('Check required validation', () => {
     cy.get(AMOUNT_INPUT).focus();
@@ -36,7 +36,8 @@ describe('Operator page', () => {
     cy.get(PHONE_INPUT).type('123123123123123123');
     cy.get(PHONE_INPUT).parents('.mat-form-field').find('mat-error span').contains('Invalid operator code');
     checkDisableStateOfBtn();
-    cy.get(PHONE_INPUT).clear({timeout: 1000}).type('1{backspace}{selectall}{backspace}{backspace}9002902902902', {delay: 100});
+    cy.get(PHONE_INPUT).clear({timeout: 1000}).type('9021231212', {delay: 1000}).blur();
+    cy.wait(5000);
     cy.get(PHONE_INPUT).parents('.mat-form-field').find('mat-error').should('not.exist');
     cy.get(PHONE_INPUT).should('not.have.class', 'ng-invalid');
   });
@@ -44,7 +45,7 @@ describe('Operator page', () => {
     cy.get(PHONE_INPUT).clear().type('1{backspace}{selectall}{backspace}{backspace}9002902');
     cy.get('mat-error span').contains('Invalid phone');
     checkDisableStateOfBtn();
-    cy.get(PHONE_INPUT).clear({timeout: 1000}).type('1{backspace}{selectall}{backspace}{backspace}9002902902902', {delay: 100});
+    cy.get(PHONE_INPUT).clear({timeout: 1000}).type('1{backspace}{selectall}{backspace}{backspace}9021231212', {delay: 100});
     cy.get(PHONE_INPUT).parents('.mat-form-field').find('mat-error span').should('not.exist');
     cy.get(PHONE_INPUT).should('not.have.class', 'ng-invalid');
   });
@@ -70,6 +71,15 @@ describe('Operator page', () => {
     cy.get('snack-bar-container').should('exist');
     cy.get('app-snackbar-info');
   })
+});
+
+describe('Not existed operator page', () => {
+  it('Check redirect to main page', () => {
+    cy.visit(BASE_URL+'/operator/4');
+    cy.get('snack-bar-container')
+      .should('exist')
+      .contains('Оператор не найден');
+  });
 });
 
 

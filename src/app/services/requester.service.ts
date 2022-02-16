@@ -9,8 +9,8 @@ import { FillForm, MockFillType } from '../typings';
 export class RequesterService {
 
   public getOperator(id: number = -1): MobileOperator | null {
-    const operator = operators.filter(item => item.id === id);
-    return operator ? operator[0] : null;
+    const operator = operators.find(item => item.id === id);
+    return operator ? operator : null;
   }
 
   public getAllOperators(): MobileOperator[] {
